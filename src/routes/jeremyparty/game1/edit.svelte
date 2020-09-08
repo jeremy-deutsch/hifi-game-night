@@ -9,41 +9,20 @@
 </script>
 
 <script lang="ts">
+  import EditGameUrl from "../../../components/EditGameURL.svelte";
   export let initialUrl: string | null;
-  let savedUrl = initialUrl;
 
-  let inputVal = "";
-
-  let putState:
-    | { type: "success" }
-    | { type: "failure"; message: string }
-    | null = null;
-
-  async function onClick() {
-    try {
-      const res = await fetch("/jeremyparty/gameLinks", {
-        method: "put",
-        body: JSON.stringify({ game1Link: inputVal }),
-      });
-      const json = await res.json();
-      savedUrl = json.game1Link;
-      putState = { type: "success" };
-    } catch (e) {
-      const message = e.message || "Edit unsuccessful.";
-      putState = { type: "failure", message };
+  async function putGameLink(game1Link: string) {
+    const res = await fetch("/jeremyparty/gameLinks", {
+      method: "put",
+      body: JSON.stringify({ game1Link }),
+    });
+    const json = await res.json();
+    if (!json || json.game1Link === undefined) {
+      throw new Error("Data came back weird");
     }
+    return json.game1Link;
   }
 </script>
 
-{#if !savedUrl}
-  <p>No URL saved yet.</p>
-{:else}
-  <p>The saved URL is {savedUrl}.</p>
-{/if}
-<input bind:value={inputVal} placeholder="Paste the link here" />
-<button on:click={onClick}>Change the link</button>
-{#if putState && putState.type === 'success'}
-  <p>Success!</p>
-{:else if putState && putState.type === 'failure'}
-  <p>Error: {putState.message}</p>
-{/if}
+<EditGameUrl {putGameLink} {initialUrl} />
