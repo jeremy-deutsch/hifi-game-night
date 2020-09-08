@@ -45,7 +45,6 @@ export async function put(
   res: ServerResponse,
   next: () => void
 ) {
-  console.log(`req (${typeof req}):`, req);
   const data: PutBody = JSON.parse(await buildRequestBody(req));
   if (!data) next();
   const ops: Array<Promise<any>> = [];
