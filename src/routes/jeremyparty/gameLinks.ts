@@ -22,7 +22,12 @@ export async function get(req: unknown, res: ServerResponse) {
 }
 
 // TODO: make this configurable
-const validDomains = ["codenames.game", "skribbl.io"];
+const validDomains = [
+  "codenames.game",
+  "www.codenames.game",
+  "skribbl.io",
+  "www.skribbl.io",
+];
 
 interface PutBody {
   game1Link?: string;
