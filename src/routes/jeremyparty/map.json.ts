@@ -57,31 +57,61 @@ export async function get(req: unknown, res: ServerResponse) {
         mapLandmarks: [
           // note: the center is around 23 units
           {
+            // game 1
             name: "Play",
             positionSU: {
-              x: 12,
+              x: 11,
               y: 11,
               z: 0,
             },
-            widthSU: 1,
-            heightSU: 1,
-            hexColor: "#ffffff",
+            radiusSU: 0.8,
+            hexColor: "#ffffff80",
             textHexColor: "#000000",
             href: `${baseURL}/game1`,
             imageHref: `${baseURLStart}/play-icon.png`,
           },
           {
+            // edit game 1
             name: "",
             positionSU: {
-              x: 14,
+              x: 13,
               y: 11,
               z: 0,
             },
             widthSU: 1,
             heightSU: 1,
-            hexColor: "#ffffff",
+            hexColor: "#ffffff80",
             textHexColor: "#000000",
             href: `${baseURL}/game1/edit`,
+            imageHref: `${baseURLStart}/write.png`,
+          },
+          {
+            // game 2
+            name: "Play",
+            positionSU: {
+              x: 30,
+              y: 13,
+              z: 0,
+            },
+            radiusSU: 0.5,
+            hexColor: "#ffffff80",
+            textHexColor: "#000000",
+            href: `${baseURL}/game2`,
+            imageHref: `${baseURLStart}/play-icon.png`,
+          },
+          {
+            // edit game 2
+            name: "",
+            positionSU: {
+              x: 32,
+              y: 13,
+              z: 0,
+            },
+            widthSU: 1,
+            heightSU: 1,
+            hexColor: "#ffffff80",
+            textHexColor: "#000000",
+            href: `${baseURL}/game2/edit`,
             imageHref: `${baseURLStart}/write.png`,
           },
           {
