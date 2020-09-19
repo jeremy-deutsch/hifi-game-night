@@ -81,8 +81,8 @@ export async function get(req: unknown, res: ServerResponse) {
             },
             widthSU: 1,
             heightSU: 1,
-            hexColor: "#ffffff",
-            textHexColor: "#000000",
+            hexColor: "#ffffff80",
+            textHexColor: "#000000ff",
             href: `${baseURL}/game1/edit`,
             imageHref: `${baseURLStart}/write.png`,
           },
@@ -90,7 +90,7 @@ export async function get(req: unknown, res: ServerResponse) {
             // game 2
             name: "Play",
             positionSU: {
-              x: 30,
+              x: 34,
               y: 13,
               z: 0,
             },
@@ -105,7 +105,7 @@ export async function get(req: unknown, res: ServerResponse) {
             // edit game 2
             name: "",
             positionSU: {
-              x: 32,
+              x: 36,
               y: 13,
               z: 0,
             },
