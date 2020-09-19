@@ -1,6 +1,13 @@
 import type { ServerResponse } from "http";
 import { getGame1Link } from "../../db";
 
+const { PORT, NODE_ENV, BASE_URL } = process.env;
+const dev = NODE_ENV === "development";
+
+const baseURLStart = dev ? `localhost:${PORT}` : BASE_URL;
+
+const baseURL = baseURLStart + "/jeremyparty";
+
 interface Landmark {
   name: string;
   positionSU: { x: number; y: number; z: 0 };
@@ -46,7 +53,7 @@ export async function get(req: unknown, res: ServerResponse) {
     comments: "A map for your game night",
     maps: [
       {
-        mapName: "Demo Map",
+        mapName: "Game Night Map",
         mapImageSrc:
           "https://hifi-content.s3.amazonaws.com/Background_Images/garden5.jpg",
         mapLandmarks: [
@@ -61,13 +68,13 @@ export async function get(req: unknown, res: ServerResponse) {
             heightSU: 1,
             hexColor: "#c634eb",
             textHexColor: "#000000",
-            href: game1Link || "#",
+            href: game1Link ? `${baseURL}/game1` : "#",
             imageHref: "https://i.imgur.com/R8GMYxz.png",
           },
           {
             name: "Edit game 1",
             positionSU: {
-              x: 20,
+              x: 22,
               y: 15,
               z: 0,
             },
@@ -75,7 +82,7 @@ export async function get(req: unknown, res: ServerResponse) {
             heightSU: 1,
             hexColor: "#c634eb",
             textHexColor: "#000000",
-            href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            href: `${baseURL}/game1/edit`,
             imageHref: "https://i.imgur.com/R8GMYxz.png",
           },
           {

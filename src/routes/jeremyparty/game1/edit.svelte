@@ -36,4 +36,8 @@
   }
 </script>
 
+<svelte:head>
+  <title>Edit game 1</title>
+</svelte:head>
+
 <EditGameUrl {getGameLink} {putGameLink} {initialUrl} />

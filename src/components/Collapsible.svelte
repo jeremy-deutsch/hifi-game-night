@@ -36,6 +36,7 @@
   .button-text {
     font-size: 20px;
     padding-left: 20px;
+    text-align: start;
   }
 </style>
 

@@ -27,9 +27,13 @@ const validDomains = [
   "www.codenames.game",
   "skribbl.io",
   "www.skribbl.io",
+  "secrethitler.io",
+  "www.secrethitler.io",
+  "playingcards.io",
+  "www.playingcards.io",
 ];
 
-interface PutBody {
+export interface PutBody {
   game1Link?: string;
   game2Link?: string;
   game3Link?: string;

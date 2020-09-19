@@ -13,9 +13,13 @@
     if (!process.browser) return;
     const newTimeout = setInterval(async () => {
       if (refetchTimeout !== newTimeout) return;
-      const gameLink = await getGameLink();
-      if (refetchTimeout !== newTimeout) return;
-      savedUrl = gameLink;
+      try {
+        const gameLink = await getGameLink();
+        if (refetchTimeout !== newTimeout) return;
+        savedUrl = gameLink;
+      } catch (e) {
+        console.error(e);
+      }
     }, 10000);
     clearTimeout(refetchTimeout);
     refetchTimeout = newTimeout;
@@ -84,6 +88,15 @@
   li {
     padding: 2px 0px;
   }
+
+  .talking-games-section {
+    padding-left: 14px;
+  }
+
+  .talking-games-rules {
+    padding-left: 32px;
+    margin: unset;
+  }
 </style>
 
 <div class="container">
@@ -100,7 +113,8 @@
         <p>
           The currently saved URL is <a
             href={savedUrl}
-            target="_blank">{savedUrl}</a>.
+            target="_blank"
+            rel="noreferrer noopener">{savedUrl}</a>.
         </p>
       {/if}
       <form on:submit={onSubmit}>
@@ -125,19 +139,54 @@
       <h1>Games you can play</h1>
       <Collapsible title="Browser games">
         <ul>
-          <li><a target="_blank" href="https://skribbl.io">skribbl.io</a></li>
           <li>
-            <a target="_blank" href="https://codenames.game">Codenames</a>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://skribbl.io">skribbl.io</a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://codenames.game">Codenames</a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://secrethitler.io">Secret Hitler</a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://playingcards.io/">playingcards.io</a> (various card games,
+            inc. Joking Hazard, and Funemployed if you ask Jeremy to set it up)
           </li>
         </ul>
       </Collapsible>
       <Collapsible title="Talking games">
-        <ul>
-          <li><a target="_blank" href="https://skribbl.io">skribbl.io</a></li>
-          <li>
-            <a target="_blank" href="https://codenames.game">Codenames</a>
-          </li>
-        </ul>
+        <div class="talking-games-section">
+          <Collapsible title="Never Have I Ever">
+            <p class="talking-games-rules">
+              It's the Never Have I ever you know from "real life"! Go around in
+              a circle saying things you haven't done, and speak up when you
+              hear someone mention something you've done. You can count on your
+              fingers for extra effect if you really want.
+            </p>
+          </Collapsible>
+          <Collapsible title={'Work Zoom "Happy Hour" Simulator'}>
+            <p class="talking-games-rules">
+              If you really want to play this game (which, believe me, you
+              don't), just try to talk about whatever, and watch the
+              conversation turn to listing off Netflix shows, marveling about
+              the state of the world, or awkwardly discovering that someone in
+              the group thinks "social distancing" means "hanging out with
+              people less often".
+            </p>
+          </Collapsible>
+        </div>
       </Collapsible>
     </div>
   </div>
