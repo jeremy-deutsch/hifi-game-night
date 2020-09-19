@@ -68,7 +68,7 @@ export async function get(req: unknown, res: ServerResponse) {
             hexColor: "#ffffff",
             textHexColor: "#000000",
             href: `${baseURL}/game1`,
-            imageHref: `${baseURL}/play-icon.png`,
+            imageHref: `${baseURLStart}/play-icon.png`,
           },
           {
             name: "",
@@ -82,7 +82,7 @@ export async function get(req: unknown, res: ServerResponse) {
             hexColor: "#ffffff",
             textHexColor: "#000000",
             href: `${baseURL}/game1/edit`,
-            imageHref: `${baseURL}/write.png`,
+            imageHref: `${baseURLStart}/write.png`,
           },
           {
             name: "Burning Man",
