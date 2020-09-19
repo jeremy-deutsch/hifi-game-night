@@ -45,8 +45,6 @@ interface MapData {
 }
 
 export async function get(req: unknown, res: ServerResponse) {
-  const [game1Link] = await Promise.all([getGame1Link()]);
-
   const mapData: MapData = {
     author: "Game Night",
     mapsJSONVersion: "v1.1.0",
@@ -62,29 +60,29 @@ export async function get(req: unknown, res: ServerResponse) {
             name: "Play",
             positionSU: {
               x: 12,
-              y: 13,
+              y: 11,
               z: 0,
             },
             widthSU: 1,
             heightSU: 1,
-            hexColor: "#c634eb",
+            hexColor: "#ffffff",
             textHexColor: "#000000",
-            href: game1Link ? `${baseURL}/game1` : "#",
-            imageHref: "https://i.imgur.com/R8GMYxz.png",
+            href: `${baseURL}/game1`,
+            imageHref: `${baseURL}/play-icon.png`,
           },
           {
-            name: "Edit",
+            name: "",
             positionSU: {
               x: 14,
-              y: 13,
+              y: 11,
               z: 0,
             },
             widthSU: 1,
             heightSU: 1,
-            hexColor: "#c634eb",
+            hexColor: "#ffffff",
             textHexColor: "#000000",
             href: `${baseURL}/game1/edit`,
-            imageHref: "https://i.imgur.com/R8GMYxz.png",
+            imageHref: `${baseURL}/write.png`,
           },
           {
             name: "Burning Man",
