@@ -57,11 +57,12 @@ export async function get(req: unknown, res: ServerResponse) {
         mapImageSrc:
           "https://hifi-content.s3.amazonaws.com/Background_Images/garden5.jpg",
         mapLandmarks: [
+          // note: the center is around 23 units
           {
-            name: "Play game 1",
+            name: "Play",
             positionSU: {
-              x: 20,
-              y: 15,
+              x: 12,
+              y: 13,
               z: 0,
             },
             widthSU: 1,
@@ -72,10 +73,10 @@ export async function get(req: unknown, res: ServerResponse) {
             imageHref: "https://i.imgur.com/R8GMYxz.png",
           },
           {
-            name: "Edit game 1",
+            name: "Edit",
             positionSU: {
-              x: 22,
-              y: 15,
+              x: 14,
+              y: 13,
               z: 0,
             },
             widthSU: 1,
