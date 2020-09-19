@@ -14,7 +14,6 @@ interface Landmark {
   hexColor: string;
   textHexColor?: string;
   href?: string;
-  imageHref?: string;
   // only one link can have autoplay: true per map
   autoplay?: boolean;
   // only a youtube link can have audioOnly: true
@@ -25,6 +24,7 @@ interface LandmarkRectangle extends Landmark {
   widthSU: number;
   heightSU: number;
   rotationDegrees?: number;
+  imageHref?: string;
   radiusSU?: never;
 }
 
@@ -64,7 +64,8 @@ export async function get(req: unknown, res: ServerResponse) {
               y: 11,
               z: 0,
             },
-            radiusSU: 0.8,
+            widthSU: 1,
+            heightSU: 1,
             hexColor: "#ffffff80",
             textHexColor: "#000000",
             href: `${baseURL}/game1`,
@@ -93,8 +94,9 @@ export async function get(req: unknown, res: ServerResponse) {
               y: 13,
               z: 0,
             },
-            radiusSU: 0.5,
-            hexColor: "#ffffff80",
+            widthSU: 1,
+            heightSU: 1,
+            hexColor: "#ffffff",
             textHexColor: "#000000",
             href: `${baseURL}/game2`,
             imageHref: `${baseURLStart}/play-icon.png`,
@@ -109,7 +111,7 @@ export async function get(req: unknown, res: ServerResponse) {
             },
             widthSU: 1,
             heightSU: 1,
-            hexColor: "#ffffff80",
+            hexColor: "#ffffff",
             textHexColor: "#000000",
             href: `${baseURL}/game2/edit`,
             imageHref: `${baseURLStart}/write.png`,
