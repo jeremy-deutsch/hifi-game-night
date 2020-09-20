@@ -30,7 +30,9 @@
       throw new Error("Data came back weird");
     }
     if (json.game1Link !== game1Link) {
-      throw new Error("Link rejected");
+      throw new Error(
+        "Link rejected. The link has to be from one of the pages under Games You Can Play"
+      );
     }
     return json.game1Link;
   }

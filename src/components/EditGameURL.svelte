@@ -121,7 +121,7 @@
         <input
           bind:value={inputVal}
           maxlength={200}
-          placeholder="Paste the link here" />
+          placeholder="Paste the new link here" />
         <button disabled={!inputVal}>Save the new link</button>
       </form>
       <p>
@@ -178,12 +178,9 @@
           </Collapsible>
           <Collapsible title={'Work Zoom "Happy Hour" Simulator'}>
             <p class="talking-games-rules">
-              If you really want to play this game (which, believe me, you
-              don't), just try to talk about whatever, and watch the
-              conversation turn to listing off Netflix shows, marveling about
-              the state of the world, or awkwardly discovering that someone in
-              the group thinks "social distancing" means "hanging out with
-              people less often".
+              This is the game you don't want to play: trying to awkwardly have
+              a conversation with six people at once. Instead, try talking to
+              people one-on-one or in small groups!
             </p>
           </Collapsible>
         </div>
