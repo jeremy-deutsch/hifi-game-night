@@ -161,6 +161,18 @@
             <a
               target="_blank"
               rel="noreferrer noopener"
+              href="https://scattergoriesonline.net">Scattergories</a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.wordscatter.com">Word Scatter (it's Boggle)</a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
               href="https://playingcards.io/">playingcards.io</a> (various card games,
             inc. Joking Hazard, and Funemployed if you ask Jeremy to set it up)
           </li>
@@ -174,6 +186,13 @@
               a circle saying things you haven't done, and speak up when you
               hear someone mention something you've done. You can count on your
               fingers for extra effect if you really want.
+            </p>
+          </Collapsible>
+          <Collapsible title="Oops, All Truths!">
+            <p class="talking-games-rules">
+              Remember Truth Or Dare? Dares are hard over voice chat... so
+              tonight we're going all truths. Each player to answer a truth gets
+              to ask the next one.
             </p>
           </Collapsible>
           <Collapsible title={'Work Zoom "Happy Hour" Simulator'}>

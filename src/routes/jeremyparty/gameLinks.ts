@@ -22,7 +22,7 @@ export async function get(req: unknown, res: ServerResponse) {
 }
 
 // TODO: make this configurable
-const validDomains = [
+const validDomains = new Set([
   "codenames.game",
   "www.codenames.game",
   "skribbl.io",
@@ -31,7 +31,29 @@ const validDomains = [
   "www.secrethitler.io",
   "playingcards.io",
   "www.playingcards.io",
-];
+  "discord.gg",
+  "www.discord.gg",
+  "discord.com",
+  "www.discord.com",
+  "mafia.gg",
+  "www.mafia.gg",
+  "epicmafia.com",
+  "www.epicmafia.com",
+  "crazygames.com",
+  "www.crazygames.com",
+  "jackbox.tv",
+  "www.jackbox.tv",
+  "scattergoriesonline.net",
+  "www.scattergoriesonline.net",
+  "wordscatter.com",
+  "www.wordscatter.com",
+  "youtube.com",
+  "www.youtube.com",
+  "twitch.tv",
+  "www.twitch.tv",
+  "youtu.be",
+  "www.youtu.be",
+]);
 
 export interface PutBody {
   game1Link?: string;
@@ -44,7 +66,7 @@ function isValidLink(maybeLink: any): maybeLink is string {
   if (maybeLink.length > 600) return false;
   try {
     const url = new URL(maybeLink);
-    return validDomains.includes(url.hostname);
+    return validDomains.has(url.hostname);
   } catch (e) {
     return false;
   }
