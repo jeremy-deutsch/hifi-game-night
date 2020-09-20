@@ -150,12 +150,12 @@ export async function get(req: unknown, res: ServerResponse) {
             name: "Help",
             positionSU: {
               x: 19,
-              y: 22,
+              y: 21,
               z: 0,
             },
             radiusSU: 2,
             hexColor: "#000000",
-            href: baseURL,
+            href: `${baseURLStart}/help`,
           },
           // {
           //   name: "Burning Man",

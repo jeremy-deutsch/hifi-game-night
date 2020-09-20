@@ -41,6 +41,7 @@ export interface PutBody {
 
 function isValidLink(maybeLink: any): maybeLink is string {
   if (typeof maybeLink !== "string") return false;
+  if (maybeLink.length > 600) return false;
   try {
     const url = new URL(maybeLink);
     return validDomains.includes(url.hostname);
