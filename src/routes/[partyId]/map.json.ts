@@ -1,5 +1,4 @@
 import type { ServerResponse } from "http";
-import { getGame1Link } from "../../db";
 
 const { PORT, NODE_ENV, BASE_URL } = process.env;
 const dev = NODE_ENV === "development";

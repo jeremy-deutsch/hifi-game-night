@@ -10,11 +10,15 @@ import {
 } from "../../db";
 import { buildRequestBody } from "../../helpers";
 
-export async function get(req: unknown, res: ServerResponse) {
+export async function get(
+  req: { params: { partyId: string } },
+  res: ServerResponse
+) {
+  const partyId = req.params.partyId;
   const [game1Link, game2Link, game3Link] = await Promise.all([
-    getGame1Link(),
-    getGame2Link(),
-    getGame3Link(),
+    getGame1Link(partyId),
+    getGame2Link(partyId),
+    getGame3Link(partyId),
   ]);
 
   res.setHeader("Content-Type", "application/json");
@@ -22,38 +26,25 @@ export async function get(req: unknown, res: ServerResponse) {
 }
 
 // TODO: make this configurable
-const validDomains = new Set([
-  "codenames.game",
-  "www.codenames.game",
-  "skribbl.io",
-  "www.skribbl.io",
-  "secrethitler.io",
-  "www.secrethitler.io",
-  "playingcards.io",
-  "www.playingcards.io",
-  "discord.gg",
-  "www.discord.gg",
-  "discord.com",
-  "www.discord.com",
-  "mafia.gg",
-  "www.mafia.gg",
-  "epicmafia.com",
-  "www.epicmafia.com",
-  "crazygames.com",
-  "www.crazygames.com",
-  "jackbox.tv",
-  "www.jackbox.tv",
-  "scattergoriesonline.net",
-  "www.scattergoriesonline.net",
-  "wordscatter.com",
-  "www.wordscatter.com",
-  "youtube.com",
-  "www.youtube.com",
-  "twitch.tv",
-  "www.twitch.tv",
-  "youtu.be",
-  "www.youtu.be",
-]);
+const validDomains = new Set(
+  [
+    "codenames.game",
+    "skribbl.io",
+    "secrethitler.io",
+    "playingcards.io",
+    "discord.gg",
+    "discord.com",
+    "mafia.gg",
+    "epicmafia.com",
+    "crazygames.com",
+    "jackbox.tv",
+    "scattergoriesonline.net",
+    "wordscatter.com",
+    "youtube.com",
+    "twitch.tv",
+    "youtu.be",
+  ].flatMap((url) => [url, "www." + url])
+);
 
 export interface PutBody {
   game1Link?: string;
@@ -73,22 +64,23 @@ function isValidLink(maybeLink: any): maybeLink is string {
 }
 
 export async function put(
-  req: IncomingMessage & { body: {} },
+  req: IncomingMessage & { body: {}; params: { partyId: string } },
   res: ServerResponse,
   next: () => void
 ) {
+  const partyId = req.params.partyId;
   const data: PutBody = JSON.parse(await buildRequestBody(req));
   if (!data) next();
   const ops: Array<Promise<any>> = [];
   if (isValidLink(data.game1Link)) {
-    ops.push(setGame1Link(data.game1Link));
+    ops.push(setGame1Link(partyId, data.game1Link));
   }
   if (isValidLink(data.game2Link)) {
-    ops.push(setGame2Link(data.game2Link));
+    ops.push(setGame2Link(partyId, data.game2Link));
   }
   if (isValidLink(data.game3Link)) {
-    ops.push(setGame3Link(data.game3Link));
+    ops.push(setGame3Link(partyId, data.game3Link));
   }
   await Promise.all(ops);
-  await get(null, res);
+  return await get(req, res);
 }

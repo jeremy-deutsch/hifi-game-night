@@ -7,7 +7,7 @@
   let savedUrl = initialUrl;
 
   export let getGameLink: () => Promise<string | null>;
-  let refetchTimeout: NodeJS.Timeout;
+  let refetchTimeout: number;
   function resetRefetchInterval() {
     // we use fetch(), so only run this on the client
     if (!process.browser) return;
@@ -24,6 +24,7 @@
     clearTimeout(refetchTimeout);
     refetchTimeout = newTimeout;
   }
+  resetRefetchInterval();
 
   let inputVal = "";
 
